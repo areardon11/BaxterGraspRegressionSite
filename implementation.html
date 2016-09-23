@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://github.com/rykard95/EE106BFinal">Group 7</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Overview<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="implementation.html">Implementation</a></li>
+            <li><a href="results.html">Results and Conclusion</a></li>
+            <li><a href="team.html">The Team</a></li>
+            <li><a href="extras.html">Extras</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="content">
+        <div class='info col-md-6'>
+            <h2>Hardware</h2>
+            <div class="col-md-12">
+                <h3>Xbox Kinects</h3>
+                <div class="col-md-6">
+                    <p>
+                        The Xbox kinects are set up so that they can generate a point cloud from opposite ends
+                        of an object. Because of their high bandwidth output, a single usb controller cannot
+                        handle the output of two kinects. With this in mind, we must use usb ports which use different
+                        controllers. This translates to using usb ports farthest from each other on the computer.
+                    </p> 
+                    <p>
+                        Once the kinks were figured out, we used the ros package <em>freenect_launch</em> to interface
+                        with the kinects and publish point cloud data. The majority of the time was spent on figuring 
+                        out this interface, but afterwards, we were able to move quickly when implementing the rest 
+                        of the software.
+                    </p>
+                    <p>To the right is a picture of our experimental setup with Baxter, and AR Tag, and two XBox Kinects.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="imgs/IMG_6034.JPG">
+                </div>
+            </div>   
+        </div>
+        <div class='info col-md-6'>
+            <h2>Software</h2>
+            <div class="col-md-6">
+                <h3>ROS Packages</h3>
+                <p>These are the packages that made it possible for us to create our grasping system.</p>
+                <p>We use <em>ar_track_alvar</em> as a way to calibrate the cameras and discover
+                the location of the kinects relative to Baxter's base frame. We used an AR Tag like the one below.</p>
+                <p><img src="imgs/ARTag.jpg" style="height: 100px;"></p>
+                <p>For manipulating Baxter, we used the <em>MoveIt!</em> API, which was a quick way to
+                generate motion plans. However, because we were using the RRT algorithm implemented by
+                <em>MoveIt!</em>, there were some cases where a motion plan could not be found.</p>
+
+                <p><img src="imgs/Moveit_logo.png"></p>
+            </div> 
+            <div class="col-md-6">
+                <h3>Neural Networks</h3>
+                <p>We use python and the numpy module to featurize our grasps and build our neural
+                network. This neural network architecture was inspired by the one used in our machine
+                learning course. We use a logistic loss function and a hyperbolic tangent activation function
+                in the hidden layer and a sigmoid activation function for the output layer.</p>
+                <p><img src="imgs/nn.png"></p>
+            </div>    
+        </div>
+    </div>
+
+<!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src='js/nav.js'></script>
+</body>
+</html>

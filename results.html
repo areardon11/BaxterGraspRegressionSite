@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="https://github.com/rykard95/EE106BFinal">Group 7</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="index.html">Overview<span class="sr-only">(current)</span></a></li>
+            <li><a href="implementation.html">Implementation</a></li>
+            <li class="active"><a href="results.html">Results and Conclusion</a></li>
+            <li><a href="team.html">The Team</a></li>
+            <li><a href="extras.html">Extras</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="content">
+        <div class="col-md-12 info">
+            <h2>Results</h2>
+            <div class='row' style='padding: 0 20px;'>
+                <p>Here are some videos of our experiments. These experiments involve creating a point cloud model, generating grasps,
+                and performing grasps.</p>
+            </div>
+            <div class='row'>
+            <div class='col-md-6' style='text-align:center;'>
+                <h3>Duct Tape</h3>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/GFbY1EcOWxQ" frameborder="0" allowfullscreen></iframe>
+                <p>This grasp was intentionally skewed, as the points chosen for contact were skewed, as shown below in the first image.</p>
+               
+            </div>
+            <div class='col-md-6' style='text-align:center;'>
+                <h3>Pepto-Bismol</h3>
+               <iframe width="420" height="315" src="https://www.youtube.com/embed/LV9Y9u5mch4" frameborder="0" allowfullscreen></iframe>
+               <p>Here is a grasp performed on a full Pepto-Bismol bottle.</p>
+            </div>
+            </div>
+            <div class='row'>
+            <div class='col-md-6' style='text-align:center;'>
+                <h3>Water Bottle</h3>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/rdx5CS42Brw" frameborder="0" allowfullscreen></iframe>
+                <p>Here is a grasp performed on a half-full water bottle.</p>
+            </div>
+            <div class='col-md-6' style='text-align:center;'>
+                <h3>A Failure Mode</h3>
+                <iframe width="420" height="315" src="https://www.youtube.com/embed/z-x4mgKKwb0" frameborder="0" allowfullscreen></iframe>
+                 <p>This grasp is an example of the many grasps that failed because Baxter made contact with the object and pushed it away.</p>
+            </div>
+            </div>
+        </div>
+        <div class="info col-md-12">
+            <h2>Pictures with Analysis</h2>
+            <div class="col-md-6">
+                <p><img src="imgs/pctape.JPG"></p>
+                <p>Here we see a sample of contact points that are not parallel to the table, but as seen in the video, still works.</p>
+            </div>
+            <div class="col-md-6">
+                <p><img src="imgs/featurize.jpeg"></p>
+                <p>Here is an image of the featurization of the water bottle.</p>
+            </div>
+            
+        </div>
+        <div class='col-md-12 info'> 
+            <h2>Problems</h2>
+            <p>A few major issues we had were with the MoveIt-Python interface. RRT is probably not the best algorithm to use if
+            your experimental setup is fragile, since the motion plan returned could potentially span a wide space in the real world. Also, 
+            MoveIt has a lot of trouble finding trajectories in the first place, and because of that, we weren't able to get as many
+            experiments done as we would have liked.</p>
+            <p>Using the Xbox Kinects caused a bit of trouble because of their lower resolution cameras. With lower resolution, the AR tracking package becomes less accurate, and that causes issues with generating proper point clouds.</p>
+            <p>Another issue we had was the distortion due to the inaccuracy of AR Tags and Kinects. Shown below is the point
+            cloud with the environment, and then the filtered point cloud in color. You can see that there is a gap between the
+            point cloud halves, and a bit of distortion when we process the raw point cloud.</p>
+            <div class='col-md-6' style="text-align: center;"><p><img src="imgs/spray.png" style="height: 200px;"></p></div>
+            <div class='col-md-6'><p><img src="imgs/ugh.png"></p></div>
+
+        </div>
+        <div class="col-md-12 info">
+            <h2>Conclusion</h2>
+            <p>
+                With our project, we were able to combine the techniques that we learned in machine learning and the theory that we
+                were taught in robotics. In doing so, we obtained a greater mastery over the topics presented to us this year. The system that we created can not only be used to score how well simulated data can predict grasp quality, but it can also be used to generate labeled data for further experimentation.
+            </p>
+            <p>
+                Future plans for this project could include: choosing a different neural network architecture, utilizing the reflex hand, and/or choosing a different way to generate point clouds of the object.
+            </p>
+        </div>
+
+    </div>
+
+<!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script type="text/javascript" src='js/nav.js'></script>
+</body>
+</html>
